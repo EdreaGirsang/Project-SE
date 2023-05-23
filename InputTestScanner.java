@@ -12,6 +12,6 @@ public class InputTestScanner{
         else if (bulan_lahir == 2 )
             System.out.println("Pisces");
         else System.out.println("Salah Input");
-
+        System.out.println("hehe");
     }
 }
