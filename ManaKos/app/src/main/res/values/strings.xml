@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ManaKos</string>
+    <string name="Add">Add Kos</string>
+    <string name="regis">Register</string>
+    <string name="Penghuni">Penghuni</string>
+    <string name="Pemilik">Pemilik</string>
+    <string name="pass">Password</string>
+    <string name="notM">Not Match</string>
+    <string name="Emp">Empty</string>
+    <string name="fld">Field</string>
+    <string name="Cpass">Confirm Password</string>
+    <string name="email">E-mail</string>
+    <string name="RoomVal">Room Available</string>
+    <string name="KosName">Name</string>
+    <string name="RID">Room Id</string>
+    <string name="LogIn">Log In</string>
+    <string name="KID">Kos Id</string>
+    <string name="VC">Verify Code</string>
+    <string name="Select">Category</string>
+    <string name="Detail">Detail</string>
+    <string name="send">Report</string>
+    <string name="N">Name</string>
+    <string name="wKID">No Kos ID</string>
+    <string name="wKID1">Founded</string>
+    <string-array name="Category">
+        <item>Laundry</item>
+        <item>Trash</item>
+        <item>Other</item>
+    </string-array>
+</resources>
