@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "18663757999",
+    "project_id": "manakos-41e3c",
+    "storage_bucket": "manakos-41e3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18663757999:android:f2a3fa6474c41cb770dc5a",
+        "android_client_info": {
+          "package_name": "com.example.manakos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0cHA_wSg7RksHOI-CS9LIiX-lje3m--I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
