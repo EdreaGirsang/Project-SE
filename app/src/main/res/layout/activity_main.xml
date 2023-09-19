@@ -16,14 +16,16 @@
         android:gravity="center"
         android:textStyle="bold"
         android:layout_marginTop="60dp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:fontFamily="@font/quantico"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ini SLogan"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:fontFamily="@font/quando"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,31 +42,50 @@
             android:layout_marginLeft="15dp"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/quando"/>
+
         <EditText
             android:id="@+id/OwnId"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
+            android:background="@drawable/rounded2"
+            android:backgroundTint="@color/white"
+            android:elevation="15dp"
             android:hint="Owner ID"
-            android:background="@drawable/rounded2"/>
+            android:shadowColor="@color/black"
+            android:fontFamily="@font/quantico"
+            android:paddingStart="20dp"/>
+
         <EditText
             android:id="@+id/KosId"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
+            android:background="@drawable/rounded2"
+            android:backgroundTint="@color/white"
+            android:elevation="15dp"
             android:hint="Kos ID"
-            android:background="@drawable/rounded2"/>
+            android:shadowColor="@color/black"
+            android:fontFamily="@font/quantico"
+            android:paddingStart="20dp"/>
+
         <Button
             android:id="@+id/LgnBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:layout_width="222dp"
+            android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="125dp"
+            android:background="@drawable/rounded2"
+            android:backgroundTint="@color/white"
             android:text="Login"
             android:textColor="@color/black"
-            android:background="@drawable/rounded2"
-            />
+            android:fontFamily="@font/quando"
+            android:elevation="8dp"
+
+            android:textAllCaps="false"
+            android:textSize="20sp"/>
     </LinearLayout>
 <!--    -->
 <!--LgnBtn
