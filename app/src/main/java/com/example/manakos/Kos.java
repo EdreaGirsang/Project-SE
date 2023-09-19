@@ -4,11 +4,11 @@ public class Kos {
 
     String Name;
     String KID;
-    long Available;
+    int Available;
 
     public Kos(){}
 
-    public Kos(String name, long available, String KID) {
+    public Kos(String name, int available, String KID) {
         Name = name;
         Available = available;
         this.KID = KID;
@@ -30,11 +30,11 @@ public class Kos {
         Name = name;
     }
 
-    public long getAvailable() {
+    public int getAvailable() {
         return Available;
     }
 
-    public void setAvailable(long available) {
+    public void setAvailable(int available) {
         Available = available;
     }
 }

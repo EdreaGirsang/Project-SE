@@ -16,12 +16,14 @@ public class Room extends AppCompatActivity {
         View AddR = (View) findViewById(R.id.Reckanan);
         String UserID = getIntent().getExtras().getString("UID");
         String KosId = getIntent().getExtras().getString("KID");
+        int avail = getIntent().getExtras().getInt("avail");
         AddR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Room.this, AddRoom.class);
                 intent.putExtra("UID", UserID);
                 intent.putExtra("KID", KosId);
+                intent.putExtra("avail", avail);
                 startActivity(intent);
             }
         });

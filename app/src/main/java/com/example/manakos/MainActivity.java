@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                intent.putExtra("UID", own.getText().toString());
+                                intent.putExtra("KID", KID.getText().toString());
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(),"Not Found!",Toast.LENGTH_SHORT).show();

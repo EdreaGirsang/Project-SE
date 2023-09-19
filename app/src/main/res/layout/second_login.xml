@@ -48,7 +48,9 @@
         android:id="@+id/roomId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginRight="93dp"
+        android:layout_marginTop="160dp"
         android:layout_marginBottom="90dp"
         android:background="@drawable/rounded"
         android:elevation="15dp"
@@ -57,25 +59,12 @@
         android:shadowColor="@color/black"
         android:textColorHint="@color/blue_light"
         android:textStyle="italic"
+        app:layout_constraintLeft_toLeftOf="@id/rectangle"
+        app:layout_constraintRight_toRightOf="@id/rectangle"
         app:layout_constraintBottom_toBottomOf="@id/rectangle"
         app:layout_constraintTop_toTopOf="@id/rectangle"
         app:layout_constraintVertical_bias="0.162"
         tools:layout_editor_absoluteX="71dp" />
-
-    <EditText
-        android:id="@+id/VerifyCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="93dp"
-        android:background="@drawable/rounded"
-        android:hint="@string/VC"
-        android:padding="12dp"
-        android:shadowColor="@color/black"
-        android:textColorHint="@color/blue_light"
-        android:textStyle="italic"
-        android:elevation="15dp"
-        app:layout_constraintBottom_toBottomOf="@id/rectangle"
-        app:layout_constraintTop_toTopOf="@id/rectangle"/>
 
     <Button
         android:id="@+id/lgn2"
@@ -83,12 +72,11 @@
         android:layout_height="48dp"
         android:layout_marginBottom="90dp"
         android:background="@drawable/rounded"
+        android:elevation="7dp"
         android:text="@string/LogIn"
+        app:layout_constraintTop_toBottomOf="@id/roomId"
         app:layout_constraintBottom_toBottomOf="@id/rectangle"
         app:layout_constraintLeft_toLeftOf="@id/rectangle"
-        app:layout_constraintRight_toRightOf="@id/rectangle"
-        app:layout_constraintTop_toBottomOf="@id/VerifyCode"
-        android:elevation="7dp"
-        />
+        app:layout_constraintRight_toRightOf="@id/rectangle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

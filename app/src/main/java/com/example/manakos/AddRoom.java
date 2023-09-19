@@ -3,6 +3,7 @@ package com.example.manakos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,13 +36,27 @@ public class AddRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveIn(UserID, avail + 1, KosId,RmID.getText().toString());
+                Intent intent = new Intent(AddRoom.this, home_o.class);
+                intent.putExtra("UID", UserID);
+                startActivity(intent);
             }
         });
     }
 
     public void saveIn(String UID, int avail, String KID, String RID){
         String K = "K";
-
+        DocumentReference dr = db.collection("users").document(UID).collection("Residence").document(KID);
+        dr.update("Available", avail ).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getApplicationContext(),"Try to make new ROOM",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Fail to Update Unit!",Toast.LENGTH_SHORT).show();
+            }
+        });
         DocumentReference KosRef = db
                 .collection("users").document(UID)
                 .collection("Residence").document(KID).collection("Rooms").document(RID);
