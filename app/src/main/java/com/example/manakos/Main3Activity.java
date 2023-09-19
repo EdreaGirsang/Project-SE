@@ -16,6 +16,7 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Spinner spinnerLanguages=findViewById(R.id.spinner_languages);
         ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.Category, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
