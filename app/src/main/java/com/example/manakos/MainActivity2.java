@@ -26,6 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
         Button LgnBtn= (Button) findViewById(R.id.lgn2);
         String UID = getIntent().getExtras().getString("UID");
         String KID = getIntent().getExtras().getString("KID");
+        Tenant tenant = new Tenant(UID,KID,room.getText().toString());
         LgnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,9 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Intent intent = new Intent(MainActivity2.this, Main3Activity.class);
-//                                intent.putExtra("UID", UID);
-//                                intent.putExtra("KID", KID);
-//                                intent.putExtra("RID",room.getText().toString());
+                                 intent.putExtra("Tenant", tenant);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(),"Not Found!",Toast.LENGTH_SHORT).show();
