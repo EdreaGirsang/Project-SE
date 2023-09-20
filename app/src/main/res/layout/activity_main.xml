@@ -14,7 +14,6 @@
         android:layout_marginTop="48dp"
         android:fontFamily="@font/quantico"
         android:text="MANAKOS"
-<<<<<<< HEAD
         android:textColor="@color/black"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -22,26 +21,23 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-=======
-        android:textSize="40dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_marginTop="60dp"
-        android:textColor="@color/black"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ini SLogan"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20dp"/>
->>>>>>> parent of e2fdccf (Font, UI Login Tenant)
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="parent"
+        />
+
 
     <TextView
         android:id="@+id/sloganOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
+
         android:layout_marginTop="12dp"
         android:fontFamily="@font/quando"
         android:text="IniSlogan"
@@ -122,46 +118,6 @@
         app:layout_constraintStart_toStartOf="@+id/KosId" />
 
 
-=======
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="140dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Your Room"
-            android:layout_marginLeft="15dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-        <EditText
-            android:id="@+id/OwnId"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:hint="Owner ID"
-            android:background="@drawable/rounded2"/>
-        <EditText
-            android:id="@+id/KosId"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:hint="Kos ID"
-            android:background="@drawable/rounded2"/>
-        <Button
-            android:id="@+id/LgnBtn"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="Login"
-            android:textColor="@color/black"
-            android:background="@drawable/rounded2"
-            />
-    </LinearLayout>
->>>>>>> parent of e2fdccf (Font, UI Login Tenant)
 <!--    -->
 <!--LgnBtn
     OwnId
