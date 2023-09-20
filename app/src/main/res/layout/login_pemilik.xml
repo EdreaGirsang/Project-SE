@@ -27,10 +27,8 @@
         android:layout_width="285dp"
         android:layout_height="56dp"
         android:layout_marginTop="288dp"
-        android:background="@drawable/loginbtn"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/rounded2"
         android:elevation="15dp"
-        android:fontFamily="@font/quantico"
         android:hint="Email or Phone Number"
         android:padding="12dp"
         android:shadowColor="@color/black"
@@ -47,9 +45,7 @@
         android:layout_marginTop="20dp"
         android:textStyle="italic"
         android:background="@drawable/rounded2"
-        android:backgroundTint="@color/white"
         android:elevation="15dp"
-        android:fontFamily="@font/quantico"
         android:hint="@string/pass"
         android:padding="12dp"
         android:shadowColor="@color/black"
@@ -89,7 +85,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Pass"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/Pass" />
 
     <TextView
