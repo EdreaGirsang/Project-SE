@@ -37,7 +37,6 @@
         android:id="@+id/sloganOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="12dp"
         android:fontFamily="@font/quando"
         android:text="IniSlogan"
@@ -69,6 +68,7 @@
         android:background="@drawable/loginbtn"
         android:backgroundTint="@color/white"
         android:elevation="15dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/quantico"
         android:hint="Owner Id"
         android:padding="12dp"
@@ -81,6 +81,7 @@
 
     <EditText
         android:id="@+id/KosId"
+        android:textColor="@color/black"
         android:layout_width="283dp"
         android:layout_height="56dp"
         android:layout_marginTop="20dp"

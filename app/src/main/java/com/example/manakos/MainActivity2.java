@@ -26,7 +26,6 @@ public class MainActivity2 extends AppCompatActivity {
         Button LgnBtn= (Button) findViewById(R.id.lgn2);
         String UID = getIntent().getExtras().getString("UID");
         String KID = getIntent().getExtras().getString("KID");
-        Tenant tenant = new Tenant(UID,KID,room.getText().toString());
         LgnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +36,10 @@ public class MainActivity2 extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
+                                String R1 = room.getText().toString();
+                                Tenant tenant = new Tenant(UID,KID,R1);
                                 Intent intent = new Intent(MainActivity2.this, Main3Activity.class);
+                                Toast.makeText(getApplicationContext(),tenant.getRID(),Toast.LENGTH_SHORT).show();
                                  intent.putExtra("Tenant", tenant);
                                 startActivity(intent);
                             } else {
@@ -48,13 +50,8 @@ public class MainActivity2 extends AppCompatActivity {
                         }
                     }
                 });
-                accesssecond();
             }
         });
 
-    }
-    public void accesssecond(){
-        Intent intent = new Intent(this, Main3Activity.class);
-        startActivity(intent);
     }
 }

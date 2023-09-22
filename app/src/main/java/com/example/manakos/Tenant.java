@@ -6,20 +6,20 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class Tenant implements Parcelable {
-    String UID;
-    String KID;
-    String RID;
+    private String UID;
+    private String KID;
+    private String RID;
 
-    public Tenant(String UID, String KID, String RID) {
+    public Tenant(String UID, String KID, String RID1) {
         this.UID = UID;
         this.KID = KID;
-        this.RID = RID;
+        this.RID = RID1;
     }
 
     protected Tenant(Parcel in) {
         UID = in.readString();
-        KID = in.readString();
         RID = in.readString();
+        KID = in.readString();
     }
 
     public static final Creator<Tenant> CREATOR = new Creator<Tenant>() {
@@ -66,7 +66,7 @@ public class Tenant implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(UID);
-        dest.writeString(KID);
         dest.writeString(RID);
+        dest.writeString(KID);
     }
 }

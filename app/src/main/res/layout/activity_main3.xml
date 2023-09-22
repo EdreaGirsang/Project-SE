@@ -110,9 +110,11 @@
         app:layout_constraintVertical_bias="0.512" />
 
     <EditText
+        android:id="@+id/report"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="24dp"
+        android:textColor="@color/black"
         android:background="@drawable/rounded2"
         android:elevation="2dp"
         android:gravity="start"
@@ -137,6 +139,7 @@
         app:layout_constraintTop_toTopOf="@id/midRec" />
 
     <Button
+        android:id="@+id/repbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/midRec"
