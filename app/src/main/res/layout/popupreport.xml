@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="480dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="#D9D9D9"
+    android:padding="5dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Report"
+        android:textStyle="bold"
+        android:layout_marginTop="35dp"
+        android:textSize="30dp"
+        android:fontFamily="@font/quando"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/black"/>
+    
+    <View
+        android:id="@+id/laundry"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/rounded4"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Up Laundry"
+        android:textColor="@color/black"
+        android:fontFamily="@font/quantico"
+        app:layout_constraintRight_toRightOf="@id/laundry"
+        app:layout_constraintLeft_toLeftOf="@id/laundry"
+        app:layout_constraintTop_toTopOf="@id/laundry"
+        app:layout_constraintBottom_toBottomOf="@id/laundry"
+        android:textSize="15dp"/>
+
+    <View
+        android:id="@+id/trash"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/rounded4"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Up Laundry"
+        android:textColor="@color/black"
+        android:fontFamily="@font/quantico"
+        app:layout_constraintRight_toRightOf="@id/trash"
+        app:layout_constraintLeft_toLeftOf="@id/trash"
+        app:layout_constraintTop_toTopOf="@id/trash"
+        app:layout_constraintBottom_toBottomOf="@id/trash"
+        android:textSize="15dp"/>
+
+    <EditText
+        android:id="@+id/report"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:background="@drawable/rounded2"
+        android:elevation="2dp"
+        android:hint="put your other report here..."
+        android:textStyle="italic"
+        android:gravity="start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/laundry"
+        app:layout_constraintVertical_bias="0.45"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:text="Other Report"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/report"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/report"
+        app:layout_constraintBottom_toTopOf="@id/report" />
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/report"
+        app:layout_constraintRight_toRightOf="@id/report"
+        android:text="Send"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
