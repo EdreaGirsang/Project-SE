@@ -37,6 +37,8 @@ public class Main3Activity extends AppCompatActivity {
         myDialog = new Dialog(this);
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Button Rep = (Button) findViewById(R.id.rep);
+        TextView txt = (TextView) findViewById(R.id.greet);
+        txt.setText("Room " + tenant.getRID());
 
         Rep.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +60,7 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 reportmaker(tenant, "Please pick my LAUNDRY!!!", 1);
+                myDialog.dismiss();
             }
         });
 
@@ -65,6 +68,7 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 reportmaker(tenant, "My trash is FULL", 2);
+                myDialog.dismiss();
             }
         });
 
@@ -72,6 +76,7 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 reportmaker(tenant, report1.getText().toString(), 3);
+                myDialog.dismiss();
             }
         });
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

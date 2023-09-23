@@ -18,6 +18,20 @@
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
+        android:id="@+id/greet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/UpRec"
+        android:layout_marginBottom="20dp"
+        android:text=""
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/announce"
+        android:textColor="@color/black"
+        android:fontFamily="@font/quando"
+        app:layout_constraintLeft_toLeftOf="@id/announce"
+        />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Announcement"
@@ -27,7 +41,8 @@
         app:layout_constraintEnd_toEndOf="@+id/announce"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/announce"
-        tools:fontFamily="@font/quando"/>
+        android:fontFamily="@font/quantico"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
