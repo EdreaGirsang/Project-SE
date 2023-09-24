@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1851427-6e55-4e64-b2e4-43a221c6b903" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_main.xml" afterDir="false" />
+    <list default="true" id="7bb38a9c-f75a-4f3e-8559-48d4eee54ce4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2Ve1WRdYadqmMnxtYGLbvOj27Bn" />
+  <component name="ProjectId" id="2Ve1SpMX0ypIIddqldhhLo7VaWl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,19 +26,19 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "android.gradle.sync.needed": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/aryay/Documents/GitHub/Project-SE/ManaKos",
-    "settings.editor.selected.configurable": "AndroidSdkUpdater"
+    "last_opened_file_path": "C:/Users/aryay/Documents/GitHub/Project-SE/ManaKos"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e1851427-6e55-4e64-b2e4-43a221c6b903" name="Changes" comment="" />
-      <created>1695181762989</created>
+      <changelist id="7bb38a9c-f75a-4f3e-8559-48d4eee54ce4" name="Changes" comment="" />
+      <created>1695181735087</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1695181762989</updated>
+      <updated>1695181735087</updated>
     </task>
     <servers />
   </component>
