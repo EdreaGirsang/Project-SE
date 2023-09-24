@@ -27,50 +27,36 @@
                 android:layout_height="wrap_content"
                 android:text="que"
                 android:textSize="20dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
+                android:layout_marginTop="13dp"
                 android:paddingBottom="10dp"
-                android:textColor="#DDDDDD"/>
+                android:textColor="#DDDDDD"
+                android:fontFamily="@font/quando"/>
 
         <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingEnd="130dp">
+            android:layout_marginStart="8dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textColor="#DDDDDD"
+                android:fontFamily="@font/quando"
+                android:textSize="10dp"/>
 
             <TextView
                 android:id="@+id/repa"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="reportcontent"
                 android:textColor="#DDDDDD"
-                android:textSize="15dp"/>
-            </LinearLayout>
+                android:textSize="15dp"
+                android:fontFamily="@font/quando"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:orientation="vertical"
-                android:layout_gravity="end">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="DD/MM/YY"
-                    android:textColor="#DDDDDD"
-                    android:fontFamily="@font/quando"
-                    android:textSize="14dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="roomnumber"
-                    android:gravity="end"
-                    android:textSize="12dp"
-                    android:textColor="#DDDDDD"/>
-
-            </LinearLayout>
+        </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
