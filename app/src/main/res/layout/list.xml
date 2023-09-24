@@ -6,19 +6,20 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="35dp"
     android:layout_margin="16dp"
-    android:background="@color/black"
+    app:cardBackgroundColor="@color/black"
     android:id="@+id/cardd">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ly"
         android:layout_marginStart="16dp"
-        android:layout_marginVertical="6dp"
-        android:orientation="vertical">
+        android:layout_marginVertical="16dp"
+        android:orientation="vertical"
+        android:layout_marginEnd="16dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
@@ -26,21 +27,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: "
+                android:text="Name      : "
                 android:textStyle="bold"
-                android:textSize="25dp"/>
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quando"/>
 
             <TextView
                 android:id="@+id/NameKos"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="MyKos"
-                android:textSize="25dp"
-                />
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quando"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
@@ -48,21 +52,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Room: "
+                android:text="Room      : "
                 android:textStyle="bold"
-                android:textSize="25dp"/>
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quando"/>
 
             <TextView
                 android:id="@+id/RoomCount"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="25dp"
-                />
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quando"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
@@ -70,27 +77,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tenant: "
+                android:text="Tenant    : "
                 android:textStyle="bold"
-                android:textSize="25dp"/>
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quando"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="25dp"
-                />
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/quando"/>
         </LinearLayout>
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/mng"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="273dp"
-        android:layout_marginTop="29dp"
-        android:text="Manage"
-        />
-
 
 </androidx.cardview.widget.CardView>
