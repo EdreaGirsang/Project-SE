@@ -31,6 +31,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -159,7 +160,7 @@ public class Main3Activity extends AppCompatActivity{
 
     private void Repget(String UID, String KID, String RID) {
 
-        db.collection("users").document(UID).collection("Residence").document(KID).collection("reports")
+        db.collection("users").document(UID).collection("Residence").document(KID).collection("reports").orderBy("condition", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
 
                     @Override
@@ -168,9 +169,14 @@ public class Main3Activity extends AppCompatActivity{
                             Toast.makeText(getApplicationContext(),"Cant Load!",Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        pending check = new pending();
                         for(DocumentChange dc: value.getDocumentChanges()){
                             if(dc.getType() == DocumentChange.Type.ADDED){
-                                Pen.add(dc.getDocument().toObject(pending.class));
+                                check = dc.getDocument().toObject(pending.class);
+                                if(check.getRoomNumber().equals(RID)){
+                                    Pen.add(dc.getDocument().toObject(pending.class));
+                                }
+
                             }
                             adapter.notifyDataSetChanged();
                         }
