@@ -24,9 +24,9 @@ import java.util.ArrayList;
 public class home_o extends AppCompatActivity implements SelectListener{
 
     RecyclerView rv;
+
+    int i;
     ArrayList<Kos> kos;
-     int i;
-    ArrayList<IdKos> kid;
     Adapter adapter;
     String UserId;
     FirebaseFirestore db;
@@ -41,7 +41,6 @@ public class home_o extends AppCompatActivity implements SelectListener{
         rv.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
         kos = new ArrayList<Kos>();
-        kid = new ArrayList<IdKos>();
         adapter = new Adapter(home_o.this, kos,this);
         UserId = getIntent().getExtras().getString("UID");
         rv.setAdapter(adapter);
@@ -76,7 +75,6 @@ public class home_o extends AppCompatActivity implements SelectListener{
 
                             adapter.notifyDataSetChanged();
                         }
-                        i = kos.size();
                     }
                 });
 

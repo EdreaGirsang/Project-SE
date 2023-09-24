@@ -1,9 +1,12 @@
 package com.example.manakos;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -23,23 +26,41 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main3Activity extends AppCompatActivity {
+public class Main3Activity extends AppCompatActivity{
 
     Dialog myDialog;
+    int i;
+    RecyclerView rv;
+    ArrayList<pending> Pen;
+    ArrayList<pending> pen;
+    Adapter2 adapter;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         myDialog = new Dialog(this);
+        Pen = new ArrayList<pending>();
+        pen = new ArrayList<pending>();
+        rv = findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Button Rep = (Button) findViewById(R.id.rep);
+        adapter = new Adapter2(Pen,Main3Activity.this);
+        rv.setAdapter(adapter);
+        Repget(tenant.getUID(),tenant.getKID(),tenant.getRID());
         TextView txt = (TextView) findViewById(R.id.greet);
         ImageView out = (ImageView) findViewById(R.id.out);
         ImageView IV = (ImageView) findViewById(R.id.payment);
@@ -134,5 +155,27 @@ public class Main3Activity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Failed to Report",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void Repget(String UID, String KID, String RID) {
+
+        db.collection("users").document(UID).collection("Residence").document(KID).collection("reports")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Toast.makeText(getApplicationContext(),"Cant Load!",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        for(DocumentChange dc: value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                Pen.add(dc.getDocument().toObject(pending.class));
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+
     }
 }
