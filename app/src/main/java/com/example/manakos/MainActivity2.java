@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity2 extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public static String PREFS_NAME = "MyPrefsFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,15 @@ public class MainActivity2 extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
+
                                 String R1 = room.getText().toString();
+                                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity2.PREFS_NAME, 0);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("hasLoggedIn", true);
+                                editor.putString("UID", UID);
+                                editor.putString("KID", KID);
+                                editor.putString("RID", R1);
+                                editor.commit();
                                 Tenant tenant = new Tenant(UID,KID,R1);
                                 Intent intent = new Intent(MainActivity2.this, Main3Activity.class);
                                 Toast.makeText(getApplicationContext(),tenant.getRID(),Toast.LENGTH_SHORT).show();

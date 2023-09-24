@@ -86,7 +86,20 @@
 
 
     <ImageView
-        android:id="@+id/threecircle"
+        android:id="@+id/out"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@id/UpRec"
+        app:layout_constraintEnd_toEndOf="@id/UpRec"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@id/UpRec"
+        app:layout_constraintTop_toTopOf="@id/UpRec"
+        android:textColor="@color/black"
+        app:srcCompat="@drawable/logout"/>
+
+    <ImageView
+        android:id="@+id/payment"
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:elevation="3dp"
@@ -95,7 +108,7 @@
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="@id/UpRec"
         app:layout_constraintTop_toTopOf="@id/UpRec"
-        app:srcCompat="@drawable/t" />
+        app:srcCompat="@drawable/paymentcardsvgrepocom" />
 
     <TextView
         android:id="@+id/pendingtxt"

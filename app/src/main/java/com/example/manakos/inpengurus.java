@@ -46,6 +46,8 @@ public class inpengurus extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Intent intent = new Intent(inpengurus.this, Room.class);
+                                intent.putExtra("UID", owner.getText().toString());
+                                intent.putExtra("KID", KosId.getText().toString());
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(),"Not Found!",Toast.LENGTH_SHORT).show();

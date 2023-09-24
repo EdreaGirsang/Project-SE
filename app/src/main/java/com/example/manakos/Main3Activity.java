@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +41,34 @@ public class Main3Activity extends AppCompatActivity {
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Button Rep = (Button) findViewById(R.id.rep);
         TextView txt = (TextView) findViewById(R.id.greet);
+        ImageView out = (ImageView) findViewById(R.id.out);
+        ImageView IV = (ImageView) findViewById(R.id.payment);
         txt.setText("Room " + tenant.getRID());
+
+        out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity2.PREFS_NAME, 0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("hasLoggedIn", false);
+                editor.putString("UID", "0");
+                editor.putString("KID", "0");
+                editor.putString("RID", "0");
+                editor.commit();
+
+                Intent intent = new Intent(Main3Activity.this, FirstPage.class);
+                startActivity(intent);
+            }
+        });
+
+        IV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main3Activity.this, paymenttenant.class);
+                intent.putExtra("Tenant", tenant);
+                startActivity(intent);
+            }
+        });
 
         Rep.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +85,7 @@ public class Main3Activity extends AppCompatActivity {
         EditText report1 = (EditText) myDialog.findViewById(R.id.report);
         View laundry = (View) myDialog.findViewById(R.id.laundry);
         View trash = (View) myDialog.findViewById(R.id.trash);
+
 
         laundry.setOnClickListener(new View.OnClickListener() {
             @Override
