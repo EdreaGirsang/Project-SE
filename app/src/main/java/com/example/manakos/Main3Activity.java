@@ -59,7 +59,7 @@ public class Main3Activity extends AppCompatActivity{
         rv.setLayoutManager(new LinearLayoutManager(this));
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Button Rep = (Button) findViewById(R.id.rep);
-        adapter = new Adapter2(Pen,Main3Activity.this);
+        adapter = new Adapter2(Pen,Main3Activity.this,1);
         rv.setAdapter(adapter);
         Repget(tenant.getUID(),tenant.getKID(),tenant.getRID());
         TextView txt = (TextView) findViewById(R.id.greet);
@@ -173,7 +173,7 @@ public class Main3Activity extends AppCompatActivity{
                         for(DocumentChange dc: value.getDocumentChanges()){
                             if(dc.getType() == DocumentChange.Type.ADDED){
                                 check = dc.getDocument().toObject(pending.class);
-                                if(check.getRoomNumber().equals(RID)){
+                                if(check.getRoomNumber().equals(RID) && check.getCondition() == 1){
                                     Pen.add(dc.getDocument().toObject(pending.class));
                                 }
 
