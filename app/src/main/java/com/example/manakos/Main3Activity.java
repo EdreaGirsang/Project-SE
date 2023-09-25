@@ -43,9 +43,11 @@ public class Main3Activity extends AppCompatActivity{
     Dialog myDialog;
     int i;
     RecyclerView rv;
+    RecyclerView rv2;
     ArrayList<pending> Pen;
     ArrayList<pending> pen;
     Adapter2 adapter;
+    Adapter2 adapter1;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +62,11 @@ public class Main3Activity extends AppCompatActivity{
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Button Rep = (Button) findViewById(R.id.rep);
         adapter = new Adapter2(Pen,Main3Activity.this,1);
+        adapter1 = new Adapter2(pen,Main3Activity.this,1);
         rv.setAdapter(adapter);
         Repget(tenant.getUID(),tenant.getKID(),tenant.getRID());
         TextView txt = (TextView) findViewById(R.id.greet);
+        ImageView histo = (ImageView)findViewById(R.id.historyicn);
         ImageView out = (ImageView) findViewById(R.id.out);
         ImageView IV = (ImageView) findViewById(R.id.payment);
         txt.setText("Room " + tenant.getRID());
@@ -92,6 +96,13 @@ public class Main3Activity extends AppCompatActivity{
             }
         });
 
+        histo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showpopup1(v, tenant);
+            }
+        });
+
         Rep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +110,16 @@ public class Main3Activity extends AppCompatActivity{
             }
         });
 
+    }
+
+    private void showpopup1(View v, Tenant tenant) {
+        myDialog.setContentView(R.layout.popupcomplete);
+        rv2 = myDialog.findViewById(R.id.rv11);
+        rv2.setHasFixedSize(true);
+        rv2.setLayoutManager(new LinearLayoutManager(this));
+        rv2.setAdapter(adapter1);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
     public void showpopup(View v, Tenant tenant) {
@@ -175,6 +196,8 @@ public class Main3Activity extends AppCompatActivity{
                                 check = dc.getDocument().toObject(pending.class);
                                 if(check.getRoomNumber().equals(RID) && check.getCondition() == 1){
                                     Pen.add(dc.getDocument().toObject(pending.class));
+                                } else if (check.getRoomNumber().equals(RID) && check.getCondition() == 0) {
+                                    pen.add(check);
                                 }
 
                             }
