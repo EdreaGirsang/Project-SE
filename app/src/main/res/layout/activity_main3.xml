@@ -34,15 +34,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quantico"
         android:text="Announcement"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/announce"
         app:layout_constraintEnd_toEndOf="@+id/announce"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/announce"
-        android:fontFamily="@font/quantico"
-        />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/announce" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -114,16 +113,15 @@
         android:id="@+id/pendingtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:fontFamily="@font/quantico"
         android:text="Your Pending report"
-        android:elevation="4dp"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@id/pending"
         app:layout_constraintEnd_toEndOf="@id/pending"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/pending"
-        />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/pending" />
 
     <View
         android:id="@+id/pending"
@@ -158,5 +156,17 @@
         app:layout_constraintRight_toRightOf="@id/pending"
         android:text="Add new Report"
         />
+
+    <ImageView
+        android:id="@+id/historyicn"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/pendingtxt"
+        app:layout_constraintEnd_toEndOf="@+id/pending"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/pendingtxt"
+        app:srcCompat="@drawable/historyicon1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

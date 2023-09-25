@@ -18,17 +18,21 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder>{
 
     ArrayList<pending> PenAl;
     Context context;
+
+    int type;
     private SelectListenerr listenerr;
 
-    public Adapter2(ArrayList<pending> penAl, Context context) {
+    public Adapter2(ArrayList<pending> penAl, Context context, int type) {
         PenAl = penAl;
         this.context = context;
+        this.type = type;
     }
 
-    public Adapter2(ArrayList<pending> penAl, Context context, SelectListenerr listenerr) {
+    public Adapter2(ArrayList<pending> penAl, Context context, SelectListenerr listenerr, int type) {
         PenAl = penAl;
         this.context = context;
         this.listenerr = listenerr;
+        this.type = type;
     }
 
     @NonNull
@@ -55,13 +59,16 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder>{
             holder.stat.setText(status);
             holder.card.setCardBackgroundColor(Color.parseColor("#BEBEBE"));
         }
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listenerr.onItemClicked(PenAl.get(position));
-                pen.setCondition(0);
-            }
-        });
+        if(type != 1){
+            holder.card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listenerr.onItemClicked(PenAl.get(position));
+                    pen.setCondition(0);
+                }
+            });
+        }
+
     }
 
     @Override
