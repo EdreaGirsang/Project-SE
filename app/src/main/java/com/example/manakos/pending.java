@@ -4,6 +4,15 @@ public class pending {
     String Message;
     String RoomNumber;
     int condition;
+    String RepID;
+
+    public String getRepID() {
+        return RepID;
+    }
+
+    public void setRepID(String repID) {
+        RepID = repID;
+    }
 
     int type;
 
