@@ -46,7 +46,7 @@ public class Room extends AppCompatActivity implements SelectListenerr {
         ListReport = findViewById(R.id.ReportList);
         ListReport.setHasFixedSize(true);
         ListReport.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter2(Pen,Room.this, this);
+        adapter = new Adapter2(Pen,Room.this, this, 2);
         ListReport.setAdapter(adapter);
         Repget(UserID,KosId);
         AddR.setOnClickListener(new View.OnClickListener() {
