@@ -77,7 +77,7 @@
         android:backgroundTint="@color/white"
         android:elevation="7dp"
         android:fontFamily="@font/quando"
-        android:text="Login"
+        android:text="Add"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

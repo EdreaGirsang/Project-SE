@@ -30,7 +30,6 @@ public class AddKoss extends AppCompatActivity {
         String UserId = getIntent().getExtras().getString("UID");
         int unit = getIntent().getExtras().getInt("unit");
         EditText name_input = findViewById(R.id.KosName);
-        EditText Room_input = findViewById(R.id.AvailRm);
         Button LgnBtn= (Button) findViewById(R.id.lgn2);
         LgnBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -72,9 +72,10 @@ public class home_o extends AppCompatActivity implements SelectListener{
                             if(dc.getType() == DocumentChange.Type.ADDED){
                                 kos.add(dc.getDocument().toObject(Kos.class));
                             }
-
+                            i++;
                             adapter.notifyDataSetChanged();
                         }
+
                     }
                 });
 
