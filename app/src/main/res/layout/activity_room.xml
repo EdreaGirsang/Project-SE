@@ -7,48 +7,226 @@
     android:background="#DDDDDD"
     tools:context=".Room">
 
+    <View
+        android:id="@+id/UpRec"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="65dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:fontFamily="@font/quando"
+        android:text="Add Room"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/Reckanan"
+        app:layout_constraintLeft_toLeftOf="@id/Reckanan"
+        app:layout_constraintRight_toRightOf="@id/Reckanan"
+        app:layout_constraintTop_toTopOf="@id/Reckanan" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="@id/Reckanan"
-        app:layout_constraintLeft_toLeftOf="@id/Reckanan"
-        app:layout_constraintTop_toTopOf="@id/Reckanan"
-        app:layout_constraintBottom_toBottomOf="@id/Reckanan"
-        android:text="Add Room"
-        android:textStyle="bold"
-        android:textSize="30dp"
+        app:layout_constraintRight_toRightOf="@id/Lrec"
+        app:layout_constraintLeft_toLeftOf="@id/Lrec"
+        app:layout_constraintTop_toTopOf="@id/Lrec"
+        app:layout_constraintBottom_toBottomOf="@id/Lrec"
+        android:text="Room List"
+        android:fontFamily="@font/quando"
+        android:textStyle="italic"
+        android:textSize="20dp"
         android:textColor="@color/black"
         android:elevation="8dp"/>
 
     <View
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="180dp"
-        android:layout_height="150dp"
-        android:background="@drawable/rounded"
+        android:id="@+id/Lrec"
+        app:layout_constraintTop_toBottomOf="@id/UpRec"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded4"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="225dp"
         android:layout_marginBottom="550dp"/>
 
     <View
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/UpRec"
         android:id="@+id/Reckanan"
-        android:layout_width="180dp"
-        android:layout_height="150dp"
-        android:background="@drawable/rounded"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/rounded4"
         android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="225dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="550dp"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toBottomOf="@id/Reckanan"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quantico"
+        android:text="MANAKOS"
+        android:elevation="4dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/UpRec"
+        app:layout_constraintEnd_toEndOf="@id/UpRec"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="@id/UpRec"
+        app:layout_constraintTop_toTopOf="@id/UpRec"/>
+
+    <View
+        android:id="@+id/pending"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="45dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="-40dp"
+        android:layout_height="300dp"
+        android:background="@drawable/rounded4"
+        app:layout_constraintTop_toBottomOf="@id/announce"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+    <TextView
+        android:id="@+id/pendingtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:fontFamily="@font/quantico"
+        android:text="Report Waiting for Response"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@id/pending"
+        app:layout_constraintEnd_toEndOf="@id/pending"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/pending" />
+
+    <ImageView
+        android:id="@+id/historyicn"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/pendingtxt"
+        app:layout_constraintEnd_toEndOf="@+id/pending"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/pendingtxt"
+        app:srcCompat="@drawable/historyicon1" />
+
+    <TextView
+        android:id="@+id/addAnnounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quantico"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/ann"
+        app:layout_constraintEnd_toEndOf="@+id/announce"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintLeft_toRightOf="@id/ann"
+        app:layout_constraintStart_toEndOf="@id/ann"
+        app:layout_constraintTop_toBottomOf="@+id/Reckanan" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toTopOf="@id/pending"
+        android:layout_marginHorizontal="49dp"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        app:layout_constraintLeft_toLeftOf="@id/pending"
+        app:layout_constraintBottom_toBottomOf="@id/pending"
+        app:layout_constraintRight_toRightOf="@id/pending"
         android:id="@+id/ReportList"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quantico"
+        android:text="Announcement"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="@id/ann"
+        app:layout_constraintEnd_toEndOf="@+id/announce"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/announce" />
+
+    <TextView
+        android:id="@+id/ann"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quantico"
+        android:text="Announcement"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/announce"
+        app:layout_constraintEnd_toEndOf="@+id/announce"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/announce" />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RvA"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_margin="55dp"
+        app:layout_constraintLeft_toLeftOf="@id/announce"
+        app:layout_constraintTop_toTopOf="@id/announce"
+        app:layout_constraintBottom_toBottomOf="@id/announce"
+        android:elevation="3dp"
+        />
+
+    <View
+        android:id="@+id/announce"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="45dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/rounded4"
+        android:elevation="1dp"
+        app:layout_constraintTop_toBottomOf="@id/Reckanan"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <View
+        android:id="@+id/round"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@id/pending"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/rounded9"/>
+
+    <ImageView
+        android:id="@+id/payment"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@id/round"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintRight_toRightOf="@id/round"
+        app:layout_constraintLeft_toLeftOf="@id/round"
+        app:layout_constraintTop_toTopOf="@id/round"
+        app:srcCompat="@drawable/paymentcardsvgrepocom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

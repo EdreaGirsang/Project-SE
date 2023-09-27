@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,16 +26,23 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 
 public class Room extends AppCompatActivity implements SelectListenerr {
 
     RecyclerView ListReport;
+    Dialog myDialog;
     Tenant tenant;
+    RecyclerView rv2;
     int av;
     ArrayList<pending> Pen;
+    ArrayList<pending> pen;
     FirebaseFirestore db =FirebaseFirestore.getInstance();
     Adapter2 adapter;
+
+    Adapter2 adapter1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +51,26 @@ public class Room extends AppCompatActivity implements SelectListenerr {
         String UserID = getIntent().getExtras().getString("UID");
         String KosId = getIntent().getExtras().getString("KID");
         Pen = new ArrayList<pending>();
+        pen = new ArrayList<pending>();
         tenant = new Tenant(UserID, KosId, "--");
         int avail = getIntent().getExtras().getInt("avail");
         av = avail;
+        myDialog = new Dialog(this);
         ListReport = findViewById(R.id.ReportList);
         ListReport.setHasFixedSize(true);
+        ImageView histo = (ImageView) findViewById(R.id.historyicn);
         ListReport.setLayoutManager(new LinearLayoutManager(this));
         adapter = new Adapter2(Pen,Room.this, this, 2);
+        adapter1 = new Adapter2(pen, Room.this, 1);
         ListReport.setAdapter(adapter);
         Repget(UserID,KosId);
+
+        histo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showpopup1(v, tenant);
+            }
+        });
         AddR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +81,16 @@ public class Room extends AppCompatActivity implements SelectListenerr {
                 startActivity(intent);
             }
         });
+    }
+
+    private void showpopup1(View v, Tenant tenant) {
+        myDialog.setContentView(R.layout.popupcomplete);
+        rv2 = myDialog.findViewById(R.id.rv11);
+        rv2.setHasFixedSize(true);
+        rv2.setLayoutManager(new LinearLayoutManager(this));
+        rv2.setAdapter(adapter1);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
     private void Repget(String UID, String KID) {
@@ -78,6 +110,10 @@ public class Room extends AppCompatActivity implements SelectListenerr {
                                 if(check.getCondition() == 1){
                                     check.setRepID(dc.getDocument().getId().toString());
                                     Pen.add(check);
+                                }
+                                else {
+                                    check.setRepID(dc.getDocument().getId().toString());
+                                    pen.add(check);
                                 }
                             }
                             adapter.notifyDataSetChanged();
