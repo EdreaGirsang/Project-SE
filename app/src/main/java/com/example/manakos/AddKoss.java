@@ -25,7 +25,7 @@ public class AddKoss extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_koss);
+        setContentView(R.layout.add_koss);
 
         String UserId = getIntent().getExtras().getString("UID");
         int unit = getIntent().getExtras().getInt("unit");
@@ -43,7 +43,7 @@ public class AddKoss extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             saveIn(UserId , name_input.getText().toString(), unit+1);
-                            Intent intent = new Intent(AddKoss.this, home_o.class);
+                            Intent intent = new Intent(AddKoss.this, OwnerHome.class);
                             startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {

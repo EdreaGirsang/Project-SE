@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder>{
+public class AdapterReport extends RecyclerView.Adapter<AdapterReport.ViewHolder>{
 
     ArrayList<pending> PenAl;
     Context context;
@@ -22,13 +22,13 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder>{
     int type;
     private SelectListenerr listenerr;
 
-    public Adapter2(ArrayList<pending> penAl, Context context, int type) {
+    public AdapterReport(ArrayList<pending> penAl, Context context, int type) {
         PenAl = penAl;
         this.context = context;
         this.type = type;
     }
 
-    public Adapter2(ArrayList<pending> penAl, Context context, SelectListenerr listenerr, int type) {
+    public AdapterReport(ArrayList<pending> penAl, Context context, SelectListenerr listenerr, int type) {
         PenAl = penAl;
         this.context = context;
         this.listenerr = listenerr;
@@ -37,14 +37,14 @@ public class Adapter2 extends RecyclerView.Adapter<Adapter2.ViewHolder>{
 
     @NonNull
     @Override
-    public Adapter2.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterReport.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.reportlayout, parent, false);
 
-        return new Adapter2.ViewHolder(v);
+        return new AdapterReport.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter2.ViewHolder holder,@SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull AdapterReport.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         pending pen = PenAl.get(position);
         String status;
         holder.card.setCardBackgroundColor(Color.parseColor("#000000"));

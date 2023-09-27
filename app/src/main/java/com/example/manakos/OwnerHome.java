@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,35 +19,35 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class home_o extends AppCompatActivity implements SelectListener{
+public class OwnerHome extends AppCompatActivity implements SelectListener{
 
     RecyclerView rv;
 
     int i;
     ArrayList<Kos> kos;
-    Adapter adapter;
+    AdapterKos adapterKos;
     String UserId;
     FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_o);
+        setContentView(R.layout.ownerhome);
         i = 0;
         rv = findViewById(R.id.KosList);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
         kos = new ArrayList<Kos>();
-        adapter = new Adapter(home_o.this, kos,this);
+        adapterKos = new AdapterKos(OwnerHome.this, kos,this);
         UserId = getIntent().getExtras().getString("UID");
-        rv.setAdapter(adapter);
+        rv.setAdapter(adapterKos);
         kosget(UserId);
         TextView btn = (TextView) findViewById(R.id.plus);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(home_o.this, AddKoss.class);
+                Intent intent = new Intent(OwnerHome.this, AddKoss.class);
                 intent.putExtra("UID", UserId);
                 intent.putExtra("unit", i);
                 startActivity(intent);
@@ -73,7 +71,7 @@ public class home_o extends AppCompatActivity implements SelectListener{
                                 kos.add(dc.getDocument().toObject(Kos.class));
                             }
                             i++;
-                            adapter.notifyDataSetChanged();
+                            adapterKos.notifyDataSetChanged();
                         }
 
                     }
@@ -84,7 +82,7 @@ public class home_o extends AppCompatActivity implements SelectListener{
     @Override
     public void onItemClicked(Kos kos) {
         Toast.makeText(this, kos.getKID(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(home_o.this, Room.class);
+        Intent intent = new Intent(OwnerHome.this, OwnerRoomPage.class);
         intent.putExtra("KID", kos.getKID());
         intent.putExtra("UID", UserId);
         intent.putExtra("avail", kos.getAvailable());

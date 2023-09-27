@@ -2,11 +2,9 @@ package com.example.manakos;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class AdapterKos extends RecyclerView.Adapter<AdapterKos.ViewHolder> {
 
     Context context;
     private SelectListener select;
     ArrayList<Kos> KosAL;
 
-    public Adapter(Context context, ArrayList<Kos> kosAL, SelectListener listener) {
+    public AdapterKos(Context context, ArrayList<Kos> kosAL, SelectListener listener) {
         this.context = context;
         KosAL = kosAL;
         select = listener;
@@ -29,7 +27,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @NonNull
     @Override
-    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterKos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.list, parent, false);
 
@@ -37,7 +35,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull AdapterKos.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         Kos kos = KosAL.get(position);
 

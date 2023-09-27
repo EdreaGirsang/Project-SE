@@ -21,13 +21,13 @@
             android:name=".AddRoom"
             android:exported="false" />
         <activity
-            android:name=".inpengurus"
+            android:name=".PengurusLogin"
             android:exported="false" />
         <activity
-            android:name=".Room"
+            android:name=".OwnerRoomPage"
             android:exported="false" />
         <activity
-            android:name=".home_o"
+            android:name=".OwnerHome"
             android:exported="false" />
         <activity
             android:name=".Login_pemilik"
@@ -36,16 +36,16 @@
             android:name=".RegisPemilik"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".TenantLogin1"
             android:exported="false" />
         <activity
             android:name=".AddKoss"
             android:exported="false" />
         <activity
-            android:name=".Main3Activity"
+            android:name=".TenantHome"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".TenantLogin2"
             android:exported="false" />
         <activity
             android:name=".FirstPage"
