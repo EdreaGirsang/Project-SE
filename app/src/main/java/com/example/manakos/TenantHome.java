@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,12 +14,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main3Activity extends AppCompatActivity{
+public class TenantHome extends AppCompatActivity{
 
     Dialog myDialog;
     int i;
@@ -46,13 +42,12 @@ public class Main3Activity extends AppCompatActivity{
     RecyclerView rv2;
     ArrayList<pending> Pen;
     ArrayList<pending> pen;
-    Adapter2 adapter;
-    Adapter2 adapter1;
+    AdapterReport adapter, adapter1;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.tenanthome);
         myDialog = new Dialog(this);
         Pen = new ArrayList<pending>();
         pen = new ArrayList<pending>();
@@ -61,8 +56,8 @@ public class Main3Activity extends AppCompatActivity{
         rv.setLayoutManager(new LinearLayoutManager(this));
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
         Button Rep = (Button) findViewById(R.id.rep);
-        adapter = new Adapter2(Pen,Main3Activity.this,1);
-        adapter1 = new Adapter2(pen,Main3Activity.this,1);
+        adapter = new AdapterReport(Pen, TenantHome.this,1);
+        adapter1 = new AdapterReport(pen, TenantHome.this,1);
         rv.setAdapter(adapter);
         Repget(tenant.getUID(),tenant.getKID(),tenant.getRID());
         TextView txt = (TextView) findViewById(R.id.greet);
@@ -74,7 +69,7 @@ public class Main3Activity extends AppCompatActivity{
         out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity2.PREFS_NAME, 0);
+                SharedPreferences sharedPreferences = getSharedPreferences(TenantLogin2.PREFS_NAME, 0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("hasLoggedIn", false);
                 editor.putString("UID", "0");
@@ -82,7 +77,7 @@ public class Main3Activity extends AppCompatActivity{
                 editor.putString("RID", "0");
                 editor.commit();
 
-                Intent intent = new Intent(Main3Activity.this, FirstPage.class);
+                Intent intent = new Intent(TenantHome.this, FirstPage.class);
                 startActivity(intent);
             }
         });
@@ -90,7 +85,7 @@ public class Main3Activity extends AppCompatActivity{
         IV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main3Activity.this, paymenttenant.class);
+                Intent intent = new Intent(TenantHome.this, paymenttenant.class);
                 intent.putExtra("Tenant", tenant);
                 startActivity(intent);
             }
@@ -113,7 +108,7 @@ public class Main3Activity extends AppCompatActivity{
     }
 
     private void showpopup1(View v, Tenant tenant) {
-        myDialog.setContentView(R.layout.popupcomplete);
+        myDialog.setContentView(R.layout.popup_complete_report);
         rv2 = myDialog.findViewById(R.id.rv11);
         rv2.setHasFixedSize(true);
         rv2.setLayoutManager(new LinearLayoutManager(this));

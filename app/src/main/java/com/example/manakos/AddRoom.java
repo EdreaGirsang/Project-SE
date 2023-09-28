@@ -25,7 +25,7 @@ public class AddRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_room);
+        setContentView(R.layout.add_room);
         String UserID = getIntent().getExtras().getString("UID");
         String KosId = getIntent().getExtras().getString("KID");
         int avail = getIntent().getExtras().getInt("avail");
@@ -36,7 +36,7 @@ public class AddRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveIn(UserID, avail + 1, KosId,RmID.getText().toString());
-                Intent intent = new Intent(AddRoom.this, home_o.class);
+                Intent intent = new Intent(AddRoom.this, OwnerHome.class);
                 intent.putExtra("UID", UserID);
                 startActivity(intent);
             }

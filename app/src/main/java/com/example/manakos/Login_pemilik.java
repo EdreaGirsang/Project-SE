@@ -38,7 +38,7 @@ public class Login_pemilik extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Intent intent = new Intent(Login_pemilik.this, home_o.class);
+                                    Intent intent = new Intent(Login_pemilik.this, OwnerHome.class);
                                     Toast.makeText(getApplicationContext(),"Login Berhasil!",Toast.LENGTH_SHORT).show();
                                     String UserID = mAuth.getCurrentUser().getUid();
                                     intent.putExtra("UID", UserID);

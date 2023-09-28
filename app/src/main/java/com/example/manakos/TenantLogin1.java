@@ -3,30 +3,25 @@ package com.example.manakos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends AppCompatActivity {
+public class TenantLogin1 extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tenantlogin1);
         EditText own = (EditText) findViewById(R.id.OwnId);
         EditText KID =(EditText) findViewById(R.id.KosId);
         Button LgnBtn= (Button) findViewById(R.id.LgnBtn);
@@ -40,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                                Intent intent = new Intent(TenantLogin1.this, TenantLogin2.class);
                                 intent.putExtra("UID", own.getText().toString());
                                 intent.putExtra("KID", KID.getText().toString());
                                 startActivity(intent);

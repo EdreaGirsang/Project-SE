@@ -20,7 +20,7 @@ public class FirstPage extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences sharedPreferences = getSharedPreferences(MainActivity2.PREFS_NAME,0);
+                SharedPreferences sharedPreferences = getSharedPreferences(TenantLogin2.PREFS_NAME,0);
                 boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
                 String UID = sharedPreferences.getString("UID", "0");
                 String KID = sharedPreferences.getString("KID", "0");
@@ -28,7 +28,7 @@ public class FirstPage extends AppCompatActivity {
                 Tenant tenant = new Tenant(UID, KID, RID);
 
                 if(hasLoggedIn){
-                    Intent intent = new Intent(FirstPage.this, Main3Activity.class);
+                    Intent intent = new Intent(FirstPage.this, TenantHome.class);
                     intent.putExtra("Tenant", tenant);
                     startActivity(intent);
                     finish();
@@ -56,7 +56,7 @@ public class FirstPage extends AppCompatActivity {
         pngbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FirstPage.this, inpengurus.class);
+                Intent intent = new Intent(FirstPage.this, PengurusLogin.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +64,7 @@ public class FirstPage extends AppCompatActivity {
     }
 
     public void TntClicked(){
-        Intent intent = new Intent(FirstPage.this, paymenttenant.class );
+        Intent intent = new Intent(FirstPage.this, TenantLogin1.class );
         startActivity(intent);
     }
 

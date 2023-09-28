@@ -12,7 +12,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,14 +22,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 
-public class Room extends AppCompatActivity implements SelectListenerr {
+public class OwnerRoomPage extends AppCompatActivity implements SelectListenerr {
 
     RecyclerView ListReport;
     Dialog myDialog;
@@ -40,13 +36,13 @@ public class Room extends AppCompatActivity implements SelectListenerr {
     ArrayList<pending> Pen;
     ArrayList<pending> pen;
     FirebaseFirestore db =FirebaseFirestore.getInstance();
-    Adapter2 adapter;
+    AdapterReport adapter;
 
-    Adapter2 adapter1;
+    AdapterReport adapter1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room);
+        setContentView(R.layout.owner_room_page);
         View AddR = (View) findViewById(R.id.Reckanan);
         String UserID = getIntent().getExtras().getString("UID");
         String KosId = getIntent().getExtras().getString("KID");
@@ -60,8 +56,8 @@ public class Room extends AppCompatActivity implements SelectListenerr {
         ListReport.setHasFixedSize(true);
         ImageView histo = (ImageView) findViewById(R.id.historyicn);
         ListReport.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter2(Pen,Room.this, this, 2);
-        adapter1 = new Adapter2(pen, Room.this, 1);
+        adapter = new AdapterReport(Pen, OwnerRoomPage.this, this, 2);
+        adapter1 = new AdapterReport(pen, OwnerRoomPage.this, 1);
         ListReport.setAdapter(adapter);
         Repget(UserID,KosId);
 
@@ -74,7 +70,7 @@ public class Room extends AppCompatActivity implements SelectListenerr {
         AddR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Room.this, AddRoom.class);
+                Intent intent = new Intent(OwnerRoomPage.this, AddRoom.class);
                 intent.putExtra("UID", UserID);
                 intent.putExtra("KID", KosId);
                 intent.putExtra("avail", avail);
@@ -84,7 +80,7 @@ public class Room extends AppCompatActivity implements SelectListenerr {
     }
 
     private void showpopup1(View v, Tenant tenant) {
-        myDialog.setContentView(R.layout.popupcomplete);
+        myDialog.setContentView(R.layout.popup_complete_report);
         rv2 = myDialog.findViewById(R.id.rv11);
         rv2.setHasFixedSize(true);
         rv2.setLayoutManager(new LinearLayoutManager(this));
