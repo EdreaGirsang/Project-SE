@@ -66,7 +66,7 @@
         app:layout_constraintVertical_bias="0.04">
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/view_berat"
+            android:id="@+id/radioUnpaid"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -79,7 +79,7 @@
         </androidx.appcompat.widget.AppCompatRadioButton>
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/view_tinggi"
+            android:id="@+id/radioOngoing"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -92,7 +92,7 @@
         </androidx.appcompat.widget.AppCompatRadioButton>
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/view_lk"
+            android:id="@+id/radioPaid"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -107,7 +107,41 @@
 
     </RadioGroup>
 
+    <RelativeLayout
+        android:id="@+id/null_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_info"
+        app:layout_constraintVertical_bias="0.100000024">
+
+        <ImageView
+            android:id="@+id/emote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/emote_smile_svgrepo_com__3__1">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/emote"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="27dp"
+            android:text="@string/statement"
+            android:textAlignment="center"
+            android:textSize="30sp">
+
+        </TextView>
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

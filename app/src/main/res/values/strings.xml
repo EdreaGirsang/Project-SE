@@ -27,4 +27,5 @@
         <item>Trash</item>
         <item>Other</item>
     </string-array>
+    <string name="statement">statement</string>
 </resources>
