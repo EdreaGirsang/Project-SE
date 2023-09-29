@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,8 @@ public class Login_pemilik extends AppCompatActivity {
         EditText pass = (EditText) findViewById(R.id.Pass);
         TextView t = (TextView) findViewById(R.id.create);
         Button LgnBtn = (Button) findViewById(R.id.lgn2);
+        ImageButton hide = (ImageButton) findViewById(R.id.hidebutton);
+        ImageButton show = (ImageButton) findViewById(R.id.showbutton);
         mAuth = FirebaseAuth.getInstance();
         LgnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +66,24 @@ public class Login_pemilik extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Login_pemilik.this, RegisPemilik.class );
                 startActivity(intent);
+            }
+        });
+
+        hide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide.setVisibility(View.GONE);
+                show.setVisibility(View.VISIBLE);
+                pass.setTransformationMethod(null);
+            }
+        });
+
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide.setVisibility(View.VISIBLE);
+                show.setVisibility(View.GONE);
+                pass.setTransformationMethod(new PasswordTransformationMethod());
             }
         });
     }
