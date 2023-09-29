@@ -69,6 +69,7 @@
         />
 
     <EditText
+        android:inputType="textPassword"
         android:id="@+id/Pass"
         android:textColor="@color/black"
         android:layout_width="283dp"
@@ -86,7 +87,39 @@
         app:layout_constraintTop_toBottomOf="@id/Email"
         app:layout_constraintStart_toStartOf="@id/Email"
         app:layout_constraintEnd_toEndOf="@id/Email"/>
+
+    <ImageButton
+        android:id="@+id/showbutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/a1"
+        android:elevation="15dp"
+        android:src="@drawable/showpass"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/Pass"
+        app:layout_constraintEnd_toEndOf="@id/Pass"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="@id/Pass"
+        app:layout_constraintTop_toTopOf="@id/Pass"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/hidebutton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/a1"
+        android:elevation="15dp"
+        android:src="@drawable/hidepass"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/Pass"
+        app:layout_constraintEnd_toEndOf="@id/Pass"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="@id/Pass"
+        app:layout_constraintTop_toTopOf="@id/Pass"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
+        android:inputType="textPassword"
         android:id="@+id/ConfPass"
         android:textColor="@color/black"
         android:layout_width="283dp"
@@ -104,6 +137,37 @@
         app:layout_constraintTop_toBottomOf="@id/Pass"
         app:layout_constraintStart_toStartOf="@id/Pass"
         app:layout_constraintEnd_toEndOf="@id/Pass"/>
+
+    <ImageButton
+        android:id="@+id/showbuttonconf"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/a1"
+        android:elevation="15dp"
+        android:src="@drawable/showpass"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/ConfPass"
+        app:layout_constraintEnd_toEndOf="@id/ConfPass"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="@id/ConfPass"
+        app:layout_constraintTop_toTopOf="@id/ConfPass"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/hidebuttonconf"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/a1"
+        android:elevation="15dp"
+        android:src="@drawable/hidepass"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/ConfPass"
+        app:layout_constraintEnd_toEndOf="@id/ConfPass"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="@id/ConfPass"
+        app:layout_constraintTop_toTopOf="@id/ConfPass"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
         android:id="@+id/Username"
         android:textColor="@color/black"

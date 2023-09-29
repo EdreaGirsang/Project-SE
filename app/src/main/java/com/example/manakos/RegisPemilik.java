@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ public class RegisPemilik extends AppCompatActivity {
     Dialog myDialog;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
+
     String userID;
 
     @Override
@@ -44,6 +47,12 @@ public class RegisPemilik extends AppCompatActivity {
         EditText conf = (EditText) findViewById(R.id.ConfPass);
         EditText Username = (EditText) findViewById(R.id.Username);
         Button lgn = (Button) findViewById(R.id.lgn2);
+        ImageButton show = (ImageButton) findViewById(R.id.showbutton);
+        ImageButton hide = (ImageButton) findViewById(R.id.hidebutton);
+        ImageButton showconf = (ImageButton) findViewById(R.id.showbuttonconf);
+        ImageButton hideconf = (ImageButton) findViewById(R.id.hidebuttonconf);
+        EditText pass = (EditText) findViewById(R.id.Pass);
+        EditText passconf = (EditText) findViewById(R.id.ConfPass);
 
         lgn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +75,41 @@ public class RegisPemilik extends AppCompatActivity {
             }
         });
 
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show.setVisibility(View.GONE);
+                hide.setVisibility(View.VISIBLE);
+                pass.setTransformationMethod(new PasswordTransformationMethod());
+            }
+        });
+
+        hide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show.setVisibility(View.VISIBLE);
+                hide.setVisibility(View.GONE);
+                pass.setTransformationMethod(null);
+            }
+        });
+
+        showconf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showconf.setVisibility(View.GONE);
+                hideconf.setVisibility(View.VISIBLE);
+                passconf.setTransformationMethod(new PasswordTransformationMethod());
+            }
+        });
+
+        hideconf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showconf.setVisibility(View.VISIBLE);
+                hideconf.setVisibility(View.GONE);
+                passconf.setTransformationMethod(null);
+            }
+        });
     }
 
     private void reload(){
@@ -134,4 +178,5 @@ public class RegisPemilik extends AppCompatActivity {
                     }
                 });
     }
+
 }
