@@ -64,7 +64,7 @@ public class FirstPage extends AppCompatActivity {
     }
 
     public void TntClicked(){
-        Intent intent = new Intent(FirstPage.this, TenantLogin1.class );
+        Intent intent = new Intent(FirstPage.this, paymenttenant.class );
         startActivity(intent);
     }
 
