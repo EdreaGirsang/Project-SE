@@ -25,7 +25,8 @@ public class FirstPage extends AppCompatActivity {
                 String UID = sharedPreferences.getString("UID", "0");
                 String KID = sharedPreferences.getString("KID", "0");
                 String RID = sharedPreferences.getString("RID", "0");
-                Tenant tenant = new Tenant(UID, KID, RID);
+                String Date = sharedPreferences.getString("Date", "0");
+                Tenant tenant = new Tenant(UID, KID, RID,Date);
 
                 if(hasLoggedIn){
                     Intent intent = new Intent(FirstPage.this, TenantHome.class);
@@ -64,7 +65,7 @@ public class FirstPage extends AppCompatActivity {
     }
 
     public void TntClicked(){
-        Intent intent = new Intent(FirstPage.this, paymenttenant.class );
+        Intent intent = new Intent(FirstPage.this, TenantLogin1.class );
         startActivity(intent);
     }
 

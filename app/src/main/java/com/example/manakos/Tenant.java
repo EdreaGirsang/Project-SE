@@ -9,18 +9,22 @@ public class Tenant implements Parcelable {
     private String UID;
     private String KID;
     private String RID;
+    private  String Date;
 
-    public Tenant(String UID, String KID, String RID1) {
+    public Tenant(String UID, String KID, String RID1, String Date) {
         this.UID = UID;
         this.KID = KID;
         this.RID = RID1;
+        this.Date = Date;
     }
 
     protected Tenant(Parcel in) {
         UID = in.readString();
         RID = in.readString();
         KID = in.readString();
+        Date = in.readString();
     }
+
 
     public static final Creator<Tenant> CREATOR = new Creator<Tenant>() {
         @Override
@@ -33,6 +37,14 @@ public class Tenant implements Parcelable {
             return new Tenant[size];
         }
     };
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
 
     public String getUID() {
         return UID;
@@ -68,5 +80,6 @@ public class Tenant implements Parcelable {
         dest.writeString(UID);
         dest.writeString(RID);
         dest.writeString(KID);
+        dest.writeString(Date);
     }
 }

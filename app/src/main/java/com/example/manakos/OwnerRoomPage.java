@@ -48,7 +48,7 @@ public class OwnerRoomPage extends AppCompatActivity implements SelectListenerr 
         String KosId = getIntent().getExtras().getString("KID");
         Pen = new ArrayList<pending>();
         pen = new ArrayList<pending>();
-        tenant = new Tenant(UserID, KosId, "--");
+        tenant = new Tenant(UserID, KosId, "--", "0");
         int avail = getIntent().getExtras().getInt("avail");
         av = avail;
         myDialog = new Dialog(this);

@@ -20,10 +20,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -38,6 +41,7 @@ public class TenantHome extends AppCompatActivity{
 
     Dialog myDialog;
     int i;
+    String enddate;
     RecyclerView rv;
     RecyclerView rv2;
     ArrayList<pending> Pen;
@@ -75,6 +79,7 @@ public class TenantHome extends AppCompatActivity{
                 editor.putString("UID", "0");
                 editor.putString("KID", "0");
                 editor.putString("RID", "0");
+                editor.putString("Date", "0");
                 editor.commit();
 
                 Intent intent = new Intent(TenantHome.this, FirstPage.class);
@@ -84,8 +89,17 @@ public class TenantHome extends AppCompatActivity{
 
         IV.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {;
                 Intent intent = new Intent(TenantHome.this, paymenttenant.class);
+                DocumentReference dr = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID()).collection("Rooms").document(tenant.getRID());
+                dr.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        DocumentSnapshot ds = task.getResult();
+                        enddate = ds.get("Check-Out").toString();
+                    }
+                });
+                Toast.makeText(getApplicationContext(),tenant.getRID(),Toast.LENGTH_SHORT).show();
                 intent.putExtra("Tenant", tenant);
                 startActivity(intent);
             }

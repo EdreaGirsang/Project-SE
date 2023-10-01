@@ -16,13 +16,18 @@ import java.util.ArrayList;
 public class Adapter_payment extends RecyclerView.Adapter<Adapter_payment.ViewHolder> {
 
     Context context;
-    private SelectListener select;
+    private SelectPayment select;
     ArrayList<ProcessPayment> processPayments;
 
     public Adapter_payment(Context context, ArrayList<ProcessPayment> processPayments) {
         this.context = context;
         this.processPayments = processPayments;
 //        select = listener;
+    }
+    public Adapter_payment(Context context, ArrayList<ProcessPayment> processPayments, SelectPayment listener) {
+        this.context = context;
+        this.processPayments = processPayments;
+        select = listener;
     }
 
     @NonNull
@@ -42,13 +47,12 @@ public class Adapter_payment extends RecyclerView.Adapter<Adapter_payment.ViewHo
         holder.title.setText(payment.title);
         holder.date.setText(payment.date);
         holder.rupiah.setText(payment.rupiah);
-
-//        holder.card.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                select.onItemClicked(payment_infos.get(position));
-//            }
-//        });
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select.onItemClicked(processPayments.get(position));
+            }
+        });
     }
 
     @Override
@@ -66,6 +70,7 @@ public class Adapter_payment extends RecyclerView.Adapter<Adapter_payment.ViewHo
             title = itemView.findViewById(R.id.title);
             date = itemView.findViewById(R.id.duedate);
             rupiah = itemView.findViewById(R.id.payment);
+            card = itemView.findViewById(R.id.crd);
         }
     }
 }

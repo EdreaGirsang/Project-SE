@@ -13,7 +13,7 @@ public class ProcessPayment {
     String rupiah;
     private PaymentStatus status;
 
-    public ProcessPayment() {}
+    public ProcessPayment(){}
 
     public ProcessPayment(String title, String date, String rupiah, PaymentStatus status) {
         this.title = title;
@@ -25,5 +25,28 @@ public class ProcessPayment {
         return status;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getRupiah() {
+        return rupiah;
+    }
+
+    public void setRupiah(String rupiah) {
+        this.rupiah = rupiah;
+    }
 }
 

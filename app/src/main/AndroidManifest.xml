@@ -48,9 +48,6 @@
             android:name=".TenantLogin2"
             android:exported="false" />
         <activity
-            android:name=".upload_photos"
-            android:exported="false"/>
-        <activity
             android:name=".FirstPage"
             android:exported="true">
             <intent-filter>
