@@ -37,16 +37,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TenantHome extends AppCompatActivity{
+public class TenantHome extends AppCompatActivity implements SelectAnn{
 
     Dialog myDialog;
     int i;
+    RecyclerView ListAnnounce;
     String enddate;
     RecyclerView rv;
     RecyclerView rv2;
     ArrayList<pending> Pen;
     ArrayList<pending> pen;
+    ArrayList<Announce> ann;
     AdapterReport adapter, adapter1;
+    AnnounceAdapter adapterann;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,12 @@ public class TenantHome extends AppCompatActivity{
         myDialog = new Dialog(this);
         Pen = new ArrayList<pending>();
         pen = new ArrayList<pending>();
+        ann = new ArrayList<Announce>();
+        ListAnnounce = findViewById(R.id.RvA);
+        ListAnnounce.setHasFixedSize(true);
+        ListAnnounce.setLayoutManager(new LinearLayoutManager(this));
+        adapterann = new AnnounceAdapter(TenantHome.this, ann, this);
+        ListAnnounce.setAdapter(adapterann);
         rv = findViewById(R.id.rv);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -64,6 +73,7 @@ public class TenantHome extends AppCompatActivity{
         adapter1 = new AdapterReport(pen, TenantHome.this,1);
         rv.setAdapter(adapter);
         Repget(tenant.getUID(),tenant.getKID(),tenant.getRID());
+        Annget(tenant.getUID(), tenant.getKID());
         TextView txt = (TextView) findViewById(R.id.greet);
         ImageView histo = (ImageView)findViewById(R.id.historyicn);
         ImageView out = (ImageView) findViewById(R.id.out);
@@ -211,6 +221,40 @@ public class TenantHome extends AppCompatActivity{
 
                             }
                             adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+
+    }
+
+
+
+    @Override
+    public void onItemClicked(Announce announce) {
+        myDialog.setContentView(R.layout.popup_announcement_tenant);
+        TextView Content = (TextView) myDialog.findViewById(R.id.content11);
+        Content.setText(announce.Content);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+    private void Annget(String UID, String KID) {
+        db.collection("users").document(UID).collection("Residence").document(KID).collection("announce")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Toast.makeText(getApplicationContext(),"Cant Load!",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Announce check = new Announce();
+                        for(DocumentChange dc: value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                check = dc.getDocument().toObject(Announce.class);
+                                ann.add(check);
+                            }
+                            adapterann.notifyDataSetChanged();
                         }
                     }
                 });
