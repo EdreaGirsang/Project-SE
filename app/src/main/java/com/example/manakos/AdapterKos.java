@@ -41,6 +41,7 @@ public class AdapterKos extends RecyclerView.Adapter<AdapterKos.ViewHolder> {
 
         holder.Name.setText(kos.Name);
         holder.Avail.setText(String.valueOf(kos.Available));
+        holder.UID.setText(kos.KID);
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,11 +57,12 @@ public class AdapterKos extends RecyclerView.Adapter<AdapterKos.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView Name, Avail;
+        TextView Name, Avail, UID;
         public CardView card;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             Name = itemView.findViewById(R.id.NameKos);
+            UID = itemView.findViewById(R.id.k0);
             Avail = itemView.findViewById(R.id.RoomCount);
             card = itemView.findViewById(R.id.cardd);
         }

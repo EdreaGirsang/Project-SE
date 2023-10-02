@@ -27,6 +27,7 @@ public class OwnerHome extends AppCompatActivity implements SelectListener{
     ArrayList<Kos> kos;
     AdapterKos adapterKos;
     String UserId;
+    TextView uid;
     FirebaseFirestore db;
 
     @Override
@@ -37,12 +38,14 @@ public class OwnerHome extends AppCompatActivity implements SelectListener{
         rv = findViewById(R.id.KosList);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
+        TextView v1 = (TextView) findViewById(R.id.Uid);
         db = FirebaseFirestore.getInstance();
         kos = new ArrayList<Kos>();
         adapterKos = new AdapterKos(OwnerHome.this, kos,this);
         UserId = getIntent().getExtras().getString("UID");
         rv.setAdapter(adapterKos);
         kosget(UserId);
+        v1.setText(UserId);
         TextView btn = (TextView) findViewById(R.id.plus);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
