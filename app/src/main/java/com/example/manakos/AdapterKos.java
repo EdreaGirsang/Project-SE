@@ -30,7 +30,6 @@ public class AdapterKos extends RecyclerView.Adapter<AdapterKos.ViewHolder> {
     public AdapterKos.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.list, parent, false);
-
         return new ViewHolder(v);
     }
 

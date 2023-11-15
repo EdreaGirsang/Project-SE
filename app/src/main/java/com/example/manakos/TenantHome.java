@@ -33,7 +33,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +57,10 @@ public class TenantHome extends AppCompatActivity implements SelectAnn{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tenanthome);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");
+        Calendar calendar = Calendar.getInstance();
+        String tgl = formatter.format(calendar.getTime()).toString();
+        String[] sepdate = tgl.split("_", 0);
         myDialog = new Dialog(this);
         Pen = new ArrayList<pending>();
         pen = new ArrayList<pending>();
@@ -68,6 +74,12 @@ public class TenantHome extends AppCompatActivity implements SelectAnn{
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
+        String[] sepdate2 = tenant.getDate().split("_", 0);
+        if(Integer.valueOf(sepdate[0]) > Integer.valueOf(sepdate2[0]) && Integer.valueOf(sepdate[1]) >= Integer.valueOf(sepdate2[1]) && Integer.valueOf(sepdate[2]) >= Integer.valueOf(sepdate2[2])){
+            DocumentReference dr = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID()).collection("Rooms").document(tenant.getRID());
+            dr.update("Available", 0);
+            autoout();
+        }
         Button Rep = (Button) findViewById(R.id.rep);
         adapter = new AdapterReport(Pen, TenantHome.this,1);
         adapter1 = new AdapterReport(pen, TenantHome.this,1);
@@ -83,17 +95,7 @@ public class TenantHome extends AppCompatActivity implements SelectAnn{
         out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences(TenantLogin2.PREFS_NAME, 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("hasLoggedIn", false);
-                editor.putString("UID", "0");
-                editor.putString("KID", "0");
-                editor.putString("RID", "0");
-                editor.putString("Date", "0");
-                editor.commit();
-
-                Intent intent = new Intent(TenantHome.this, FirstPage.class);
-                startActivity(intent);
+                autoout();
             }
         });
 
@@ -260,4 +262,20 @@ public class TenantHome extends AppCompatActivity implements SelectAnn{
                 });
 
     }
+
+    public void autoout(){
+        SharedPreferences sharedPreferences = getSharedPreferences(TenantLogin2.PREFS_NAME, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("hasLoggedIn", false);
+        editor.putString("UID", "0");
+        editor.putString("KID", "0");
+        editor.putString("RID", "0");
+        editor.putString("Date", "0");
+        editor.commit();
+
+
+        Intent intent = new Intent(this, FirstPage.class);
+        startActivity(intent);
+    }
 }
+
