@@ -32,12 +32,19 @@ public class AdapterRoomList extends RecyclerView.Adapter<AdapterRoomList.ViewHo
         return new AdapterRoomList.ViewHolder(v);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull AdapterRoomList.ViewHolder holder, int position) {
         Tenant tenant = tenants.get(position);
         holder.Number.setText(tenant.getRID());
         holder.content.setText(tenant.getDate());
         holder.stat.setText("End in:");
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select.onItemClicked(tenants.get(position));
+            }
+        });
     }
 
     @Override

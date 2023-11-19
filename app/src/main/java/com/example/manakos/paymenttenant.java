@@ -179,10 +179,7 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd", Locale.CHINESE);
-                Date now = new Date();
-                String fileName = formatter.format(now);
-                sr = FirebaseStorage.getInstance().getReference("images/"+tenant.getUID()+"/"+tenant.getKID()+"/"+tenant.getRID()+"/"+fileName);
+                sr = FirebaseStorage.getInstance().getReference("images/"+tenant.getUID()+"/"+tenant.getKID()+"/"+tenant.getRID()+"/"+tenant.getDate());
                 sr.putFile(path).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
