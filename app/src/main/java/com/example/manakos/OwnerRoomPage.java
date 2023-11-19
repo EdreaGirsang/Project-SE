@@ -44,6 +44,8 @@ public class OwnerRoomPage extends AppCompatActivity implements SelectListenerr,
     ArrayList<pending> Pen;
     ArrayList<pending> pen;
 
+    View Lrec;
+
     ArrayList<Announce> ann;
     FirebaseFirestore db =FirebaseFirestore.getInstance();
     AdapterReport adapter;
@@ -54,6 +56,7 @@ public class OwnerRoomPage extends AppCompatActivity implements SelectListenerr,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.owner_room_page);
         View AddR = (View) findViewById(R.id.Reckanan);
+        Lrec = findViewById(R.id.Lrec);
         String UserID = getIntent().getExtras().getString("UID");
         String KosId = getIntent().getExtras().getString("KID");
         Pen = new ArrayList<pending>();
@@ -78,6 +81,17 @@ public class OwnerRoomPage extends AppCompatActivity implements SelectListenerr,
         ListReport.setAdapter(adapter);
         Annget(UserID, KosId);
         Repget(UserID,KosId);
+
+        Lrec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OwnerRoomPage.this, ListRoom.class);
+                intent.putExtra("UID", UserID);
+                intent.putExtra("KID", KosId);
+                intent.putExtra("avail", avail);
+                startActivity(intent);
+            }
+        });
 
         addAnnounce.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -78,6 +78,7 @@ public class TenantHome extends AppCompatActivity implements SelectAnn{
         if(Integer.valueOf(sepdate[0]) > Integer.valueOf(sepdate2[0]) && Integer.valueOf(sepdate[1]) >= Integer.valueOf(sepdate2[1]) && Integer.valueOf(sepdate[2]) >= Integer.valueOf(sepdate2[2])){
             DocumentReference dr = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID()).collection("Rooms").document(tenant.getRID());
             dr.update("Available", 0);
+            Toast.makeText(this, "You Are  Kicked!!!", Toast.LENGTH_SHORT).show();
             autoout();
         }
         Button Rep = (Button) findViewById(R.id.rep);

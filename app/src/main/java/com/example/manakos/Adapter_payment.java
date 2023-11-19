@@ -47,12 +47,15 @@ public class Adapter_payment extends RecyclerView.Adapter<Adapter_payment.ViewHo
         holder.title.setText(payment.title);
         holder.date.setText(payment.date);
         holder.rupiah.setText(payment.rupiah);
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                select.onItemClicked(processPayments.get(position));
-            }
-        });
+        if(select!=null){
+            holder.card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    select.onItemClicked(processPayments.get(position));
+                }
+            });
+        }
+
     }
 
     @Override
