@@ -163,13 +163,14 @@ public class RegisPemilik extends AppCompatActivity {
                             DocumentReference documentReference = db.collection("users").document(userID);
                             Map<String, Object> user = new HashMap<>();
                             user.put("email", email);
-                            user.put("password", Pass);
                             user.put("name", Username);
                             user.put("unit", kos);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Toast.makeText(getApplicationContext(),"berhasil membuat akun",Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisPemilik.this, Login_pemilik.class);
+                                    startActivity(intent);
                                 }
                             });
                         }else{
