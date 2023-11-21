@@ -27,9 +27,9 @@
         android:gravity="center"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/quando"
-        android:text="IniSlogan"
+        android:text="New Way to Manage Your Property"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
     <Button
         android:id="@+id/PemilikBtn"
         android:layout_width="222dp"
