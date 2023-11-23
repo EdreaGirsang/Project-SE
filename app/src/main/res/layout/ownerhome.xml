@@ -40,7 +40,7 @@
     <TextView
         android:textIsSelectable="true"
         android:id="@+id/Uid"
-        android:layout_width="230dp"
+        android:layout_width="180dp"
         android:gravity="end"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quantico"
