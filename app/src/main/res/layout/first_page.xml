@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="0dp"
         android:fontFamily="@font/quando"
         android:text="New Way to Manage Your Property"
         android:textColor="@color/black"
@@ -61,70 +61,4 @@
         android:text="@string/Penghuni"
         android:elevation="7dp"
         />
-
-<!--    <View-->
-<!--        android:id="@+id/rectangle"-->
-<!--        android:layout_width="270dp"-->
-<!--        android:layout_height="440dp"-->
-<!--        tools:layout_editor_absoluteX="70dp"-->
-<!--        tools:layout_editor_absoluteY="124dp"-->
-<!--        android:background="@drawable/rectangle"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        />-->
-
-<!--    <ImageView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/rectangle"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.734"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:srcCompat="@drawable/mk"-->
-<!--        tools:layout_editor_absoluteX="79dp" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/TenantBtn"-->
-<!--        android:layout_width="222dp"-->
-<!--        android:layout_height="49dp"-->
-<!--        android:layout_marginBottom="150dp"-->
-<!--        android:background="@drawable/rounded"-->
-<!--        android:text="@string/Penghuni"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/rectangle"-->
-<!--        app:layout_constraintLeft_toLeftOf="@id/rectangle"-->
-<!--        app:layout_constraintRight_toRightOf="@id/rectangle"-->
-<!--        android:elevation="7dp"-->
-<!--        />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/PemilikBtn"-->
-<!--        android:layout_width="222dp"-->
-<!--        android:layout_height="49dp"-->
-<!--        android:layout_marginTop="120dp"-->
-<!--        android:background="@drawable/rounded"-->
-<!--        android:elevation="7dp"-->
-<!--        android:text="@string/Pemilik"-->
-<!--        app:layout_constraintTop_toTopOf="@id/rectangle"-->
-<!--        app:layout_constraintLeft_toLeftOf="@id/rectangle"-->
-<!--        app:layout_constraintRight_toRightOf="@id/rectangle" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/PengurusBtn"-->
-<!--        android:layout_width="222dp"-->
-<!--        android:layout_height="49dp"-->
-<!--        android:layout_marginTop="180dp"-->
-<!--        android:background="@drawable/rounded"-->
-<!--        android:elevation="7dp"-->
-<!--        android:text="Pengurus"-->
-<!--        app:layout_constraintTop_toTopOf="@id/rectangle"-->
-<!--        app:layout_constraintLeft_toLeftOf="@id/rectangle"-->
-<!--        app:layout_constraintRight_toRightOf="@id/rectangle" />-->
-
-<!--h4FLU2KHJSfyt4S6cVCMKElRCoh1-->
-<!--    PemilikBtn
-        PengurusBtn
-        -->
 </LinearLayout>

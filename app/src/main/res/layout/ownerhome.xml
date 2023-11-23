@@ -22,22 +22,37 @@
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="@id/UpRec"
         app:layout_constraintTop_toTopOf="@id/UpRec"/>
-
+    <TextView
+        android:id="@+id/ownerIDTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="Owner ID"
+        android:fontFamily="@font/quantico"
+        android:elevation="4dp"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="@+id/UpRec"
+        app:layout_constraintBottom_toTopOf="@+id/Uid"
+        app:layout_constraintEnd_toEndOf="@+id/UpRec"/>
     <TextView
         android:textIsSelectable="true"
         android:id="@+id/Uid"
-        android:layout_width="200dp"
+        android:layout_width="230dp"
         android:gravity="end"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quantico"
-        android:text="UID"
+        android:text="KLASHJdgvd19773bd39123333231"
         android:elevation="4dp"
         android:textColor="@color/black"
         android:textSize="13dp"
         android:textStyle="bold"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="@id/UpRec"
         app:layout_constraintEnd_toEndOf="@id/UpRec"
-        app:layout_constraintTop_toTopOf="@id/UpRec"/>
+        app:layout_constraintTop_toBottomOf="@+id/ownerIDTxt"/>
 
     <View
         android:id="@+id/UpRec"
