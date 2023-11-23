@@ -41,7 +41,6 @@
         android:text="Announcement"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/announce"
         app:layout_constraintEnd_toEndOf="@+id/announce"
         app:layout_constraintHorizontal_bias="0.0"
