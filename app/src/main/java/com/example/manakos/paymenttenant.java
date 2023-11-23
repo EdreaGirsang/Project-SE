@@ -52,6 +52,7 @@ import java.util.Locale;
 public class paymenttenant extends AppCompatActivity implements SelectPayment{
     RecyclerView recyclerView;
     String CO;
+    RadioButton start;
     TextView info;
     Bitmap bitmap;
     Dialog myDialog;
@@ -61,6 +62,8 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
     Dialog myDialog1;
     Tenant tenant;
     ImageView pay;
+    String endDate;
+    RadioGroup radioGroup;
     private ArrayList<ProcessPayment> paymentList = new ArrayList<>();
     private ArrayList<ProcessPayment> filteredPaymentList = new ArrayList<>();
     View emptyLayout;
@@ -80,8 +83,21 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
         myDialog = new Dialog(this);
         TextView greet = (TextView) findViewById(R.id.greet);
         greet.setText("ROOM " + tenant.getRID());
-        String endDate = tenant.getDate().replace("_","/");
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        endDate = tenant.getDate().replace("_","/");
+        refreshpay(endDate);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(paymenttenant.this, TenantHome.class);
+                intent.putExtra("Tenant", tenant);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public void refreshpay(String end){
+        endDate = tenant.getDate().replace("_","/");
         docRef = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID())
                 .collection("Rooms").document(tenant.getRID()).collection("Upcoming").document("unpaid");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -90,7 +106,7 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
                 if(task.isSuccessful()){
                     ds = task.getResult();
                     if (Integer.valueOf(ds.get("Status").toString()) == 0){
-                        paymentList.add(new ProcessPayment("Tagihan Kos", endDate, "-", ProcessPayment.PaymentStatus.UNPAID));
+                        paymentList.add(new ProcessPayment("Tagihan Kos", end, "-", ProcessPayment.PaymentStatus.UNPAID));
                     } else if (Integer.valueOf(ds.get("Status").toString()) == 1) {
                         paymentList.add(new ProcessPayment("Tagihan Kos", CO, "-", ProcessPayment.PaymentStatus.ONGOING));
                     }
@@ -100,16 +116,8 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
                 }
             }
         });
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(paymenttenant.this, TenantHome.class);
-                intent.putExtra("Tenant", tenant);
-                startActivity(intent);
-            }
-        });
-        RadioGroup radioGroup = findViewById(R.id.view_info);
-        RadioButton start = findViewById(R.id.radioUnpaid);
+        radioGroup = findViewById(R.id.view_info);
+        start = findViewById(R.id.radioUnpaid);
         start.setChecked(true);
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -133,8 +141,6 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
             }
             updateNoDataVisibility();
         });
-
-
     }
 
     private void filterPayments(ProcessPayment.PaymentStatus status) {
@@ -186,9 +192,12 @@ public class paymenttenant extends AppCompatActivity implements SelectPayment{
 
                         Toast.makeText(getApplicationContext(),"Successfully Uploaded",Toast.LENGTH_SHORT).show();
                         docRef.update("Status", 1);
-                        Intent intent = new Intent(paymenttenant.this, paymenttenant.class);
-                        intent.putExtra("Tenant", tenant);
-                        startActivity(intent);
+                        filteredPaymentList.clear();
+                        paymentList.clear();
+                        send.setEnabled(false);
+                        adapterPayment = null;
+                        refreshpay(endDate);
+                        myDialog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

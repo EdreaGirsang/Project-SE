@@ -151,14 +151,10 @@ public class ListRoom extends AppCompatActivity implements SelectRoom{
                     dref.update("Check-Out", tenant.getDate());
 
                 }
-                int i =0;
-                for(Tenant tenant1 : list){
-                    if (tenant1.getRID() == tenant.getRID()){
-                        list.remove(i);
-                        list.add(tenant);
-                        adapterRoomList.notifyDataSetChanged();
-                    }
-                    i++;
+                if(list.contains(tenant)){
+                    list.remove(tenant);
+                    list.add(tenant);
+                    adapterRoomList.notifyDataSetChanged();
                 }
                 myDialog.dismiss();
             }
