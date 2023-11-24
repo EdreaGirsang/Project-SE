@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -56,23 +57,24 @@ public class TenantLogin2 extends AppCompatActivity {
                                     DocumentReference ref = db.collection("users").document(UID).collection("Residence").document(KID).collection("Rooms").document(R1).collection("Upcoming").document("unpaid");
                                     Map<String, Object> unpaid = new HashMap<>();
                                     unpaid.put("OutDate", formatter.format(calendar1.getTime()));
-                                    unpaid.put("Status", 0);
                                     ref.set(unpaid);
                                     DocumentReference dr = db.collection("users").document(UID).collection("Residence").document(KID).collection("Rooms").document(R1).collection("History").document(tgl);
+                                    SendToast(CekDoc);
                                     Map<String, Object> pay = new HashMap<>();
                                     pay.put("date", formatter.format(calendar.getTime()));
-                                    dr.set(pay).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    dr.set(pay).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
+                                        public void onSuccess(Void unused) {
+                                            DocumentReference docRe = db.collection("users").document(UID).collection("Residence").document(KID).collection("Rooms").document(room.getText().toString());
                                             SendToast("HALO ORANG BARU!!!");
-                                            docRef.update("Available", 1);
-                                            docRef.update("Check-In", formatter.format(calendar.getTime()));
+                                            docRe.update("Available", 1);
+                                            docRe.update("Check-In", formatter.format(calendar.getTime()));
                                             calendar.add(Calendar.MONTH, 1);
-                                            docRef.update("Check-Out", formatter.format(calendar.getTime()));
+                                            docRe.update("Check-Out", formatter.format(calendar.getTime()));
                                         }
                                     });
                                 }
-                                String dt = document.get("Check-Out").toString();
+                                String dt = formatter.format(calendar.getTime());
                                 SetLog(UID, KID, R1, document.get("Check-Out").toString());
                                 Tenant tenant = new Tenant(UID,KID,R1,dt);
                                 Intent intent = new Intent(TenantLogin2.this, TenantHome.class);

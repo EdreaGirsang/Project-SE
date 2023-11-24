@@ -74,13 +74,21 @@ public class TenantHome extends AppCompatActivity implements SelectAnn{
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         Tenant tenant = getIntent().getParcelableExtra("Tenant");
-        String[] sepdate2 = tenant.getDate().split("_", 0);
-        if(Integer.valueOf(sepdate[0]) > Integer.valueOf(sepdate2[0]) && Integer.valueOf(sepdate[1]) >= Integer.valueOf(sepdate2[1]) && Integer.valueOf(sepdate[2]) >= Integer.valueOf(sepdate2[2])){
-            DocumentReference dr = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID()).collection("Rooms").document(tenant.getRID());
-            dr.update("Available", 0);
-            Toast.makeText(this, "You Are  Kicked!!!", Toast.LENGTH_SHORT).show();
-            autoout();
-        }
+        DocumentReference docRef = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID()).collection("Rooms").document(tenant.getRID());
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                tenant.setDate(documentSnapshot.get("Check-Out").toString());
+                String[] sepdate2 = tenant.getDate().split("_", 0);
+                if(Integer.valueOf(sepdate[0]) > Integer.valueOf(sepdate2[0]) && Integer.valueOf(sepdate[1]) >= Integer.valueOf(sepdate2[1]) && Integer.valueOf(sepdate[2]) >= Integer.valueOf(sepdate2[2])){
+                    DocumentReference dr = db.collection("users").document(tenant.getUID()).collection("Residence").document(tenant.getKID()).collection("Rooms").document(tenant.getRID());
+                    dr.update("Available", 0);
+                    Toast.makeText(getApplicationContext(), "You Are  Kicked!!!", Toast.LENGTH_SHORT).show();
+                    autoout();
+                }
+                Toast.makeText(getApplicationContext(), tenant.getDate(), Toast.LENGTH_SHORT).show();
+            }
+        });
         Button Rep = (Button) findViewById(R.id.rep);
         adapter = new AdapterReport(Pen, TenantHome.this,1);
         adapter1 = new AdapterReport(pen, TenantHome.this,1);

@@ -62,8 +62,8 @@ public class AddRoom extends AppCompatActivity {
                 .collection("Residence").document(KID).collection("Rooms").document(RID);
         Map<String, Object> room = new HashMap<>();
         room.put("RoomNumber",RID);
-        room.put("Check-In", "");
-        room.put("Check-Out", "");
+        room.put("Check-In", "-");
+        room.put("Check-Out", "-");
         room.put("Available", 0);
         KosRef.set(room).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
