@@ -57,6 +57,7 @@ public class TenantLogin2 extends AppCompatActivity {
                                     DocumentReference ref = db.collection("users").document(UID).collection("Residence").document(KID).collection("Rooms").document(R1).collection("Upcoming").document("unpaid");
                                     Map<String, Object> unpaid = new HashMap<>();
                                     unpaid.put("OutDate", formatter.format(calendar1.getTime()));
+                                    unpaid.put("Status", 0);
                                     ref.set(unpaid);
                                     DocumentReference dr = db.collection("users").document(UID).collection("Residence").document(KID).collection("Rooms").document(R1).collection("History").document(tgl);
                                     SendToast(CekDoc);
